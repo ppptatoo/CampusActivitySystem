@@ -1,0 +1,27 @@
+# IDEA配置文件夹
+.idea/
+*.iml
+out/
+
+# Maven编译目录
+target/
+
+# Eclipse配置
+.classpath
+.project
+.settings/
+
+# 本地数据库私密配置
+jdbc.properties
+db.properties
+
+# 日志文件
+*.log
+
+# class编译文件
+*.class
+
+# 压缩包、打包产物
+*.war
+*.zip
+*.rar
