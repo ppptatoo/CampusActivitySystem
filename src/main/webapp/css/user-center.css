@@ -1,0 +1,201 @@
+/* ========== 用户中心样式（与 manage.css 风格一致） ========== */
+
+.uc-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.uc-sidebar {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.uc-sidebar-title {
+  padding: 16px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.uc-tab-list {
+  list-style: none;
+}
+
+.uc-tab-list a {
+  display: block;
+  padding: 14px 18px;
+  color: var(--text);
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s, color 0.15s;
+}
+
+.uc-tab-list a:hover {
+  background: #f8fafc;
+  color: var(--primary);
+}
+
+.uc-tab-list a.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 500;
+  border-left: 3px solid var(--primary);
+}
+
+.uc-tab-badge {
+  float: right;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+
+.uc-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+.uc-panel-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.uc-info-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px 16px;
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+}
+
+.uc-info-grid dt {
+  color: var(--text-muted);
+}
+
+.uc-info-grid dd {
+  margin: 0;
+}
+
+.uc-msg {
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.88rem;
+}
+
+.uc-msg-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.uc-msg-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.uc-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.uc-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.uc-inline-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+  color: var(--text);
+}
+
+.message-item {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #fafafa;
+}
+
+.message-item.unread {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.message-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.message-item-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.message-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: var(--text-muted);
+}
+
+.message-tag.activity {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.message-item-time {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.message-item-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .uc-layout {
+    grid-template-columns: 1fr;
+  }
+}
