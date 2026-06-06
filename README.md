@@ -120,22 +120,13 @@ CampusActivitySystem/
 
 采用经典 **MVC 三层架构**，纯手工实现，无 Spring 等重型框架：
 
-```
-┌──────────────────────────────────────────────────┐
-│                    浏览器 (Browser)                │
-├──────────────────────────────────────────────────┤
-│            View 层 (JSP + HTML + CSS + JS)        │
-├──────────────────────────────────────────────────┤
-│  Filter 层  │ EncodingFilter │ LoginFilter       │
-├──────────────────────────────────────────────────┤
-│          Controller 层 (8个 Servlet)              │
-├──────────────────────────────────────────────────┤
-│  Service 层 整合在 DAO 层（现阶段直接调用）         │
-├──────────────────────────────────────────────────┤
-│            DAO 层 (8个 Dao 类)                     │
-├──────────────────────────────────────────────────┤
-│            MySQL 数据库 (8张表)                     │
-└──────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    A[浏览器 Browser] --> B[Filter 层<br/>EncodingFilter + LoginFilter]
+    B --> C[View 层<br/>JSP + HTML + CSS + JS]
+    C --> D[Controller 层<br/>8个 Servlet]
+    D --> E[DAO 层<br/>8个 Dao 类]
+    E --> F[(MySQL 数据库<br/>8张表)]
 ```
 
 ---
@@ -144,19 +135,91 @@ CampusActivitySystem/
 
 数据库名：`campus_activity` | 字符集：`utf8mb4` | 共 **8 张表**
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                      users (用户表)                                │
-│  id | username | password | nickname | role | create_time        │
-│                     ▲                                              │
-│                     │  userId (外键关联)                            │
-│     ┌───────────────┼───────────────┬──────────────┐              │
-│     ▼               ▼               ▼              ▼              │
-│  lecture(讲座)  club(社团)  competition(竞赛)  award(评优)        │
-│                                                                │
-│  favorites(收藏)        browse_record(浏览记录)    messages(消息) │
-│  user_id + activity      user_id + activity         user_id       │
-└──────────────────────────────────────────────────────────────────┘
+```mermaid
+erDiagram
+    users ||--o{ lecture : 发布
+    users ||--o{ club : 发布
+    users ||--o{ competition : 发布
+    users ||--o{ award : 发布
+    users ||--o{ favorites : 收藏
+    users ||--o{ browse_record : 浏览
+    users ||--o{ messages : 接收
+
+    users {
+        int id PK
+        varchar username UK
+        varchar password
+        varchar nickname
+        varchar role
+        timestamp create_time
+    }
+
+    lecture {
+        int id PK
+        varchar title
+        varchar time
+        varchar address
+        text content
+        int userId FK
+    }
+
+    club {
+        int id PK
+        varchar title
+        varchar time
+        text content
+        varchar has_cert
+        varchar has_volunteer
+        varchar has_prize
+        int userId FK
+    }
+
+    competition {
+        int id PK
+        varchar title
+        varchar time
+        text content
+        varchar location
+        int userId FK
+    }
+
+    award {
+        int id PK
+        varchar title
+        varchar file_name
+        varchar file_path
+        varchar publish_time
+        text details
+        int userId FK
+    }
+
+    favorites {
+        int id PK
+        int user_id FK
+        varchar activity_type
+        int activity_id
+        varchar activity_title
+        timestamp create_time
+    }
+
+    browse_record {
+        int id PK
+        int user_id FK
+        varchar activity_type
+        int activity_id
+        varchar activity_title
+        timestamp browse_time
+    }
+
+    messages {
+        int id PK
+        int user_id FK
+        varchar title
+        text content
+        varchar type
+        tinyint is_read
+        timestamp create_time
+    }
 ```
 
 | 表名 | 说明 | 核心字段 |
@@ -317,8 +380,3 @@ http://localhost:8080/CampusActivitySystem/login
 
 本项目仅供学习交流使用。
 
----
-
-## 👨‍💻 作者
-
-Course Project — 校园活动综合管理系统
