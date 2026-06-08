@@ -25,11 +25,6 @@
 - 📬 **站内消息** — 新活动发布自动通知所有用户，支持已读/未读标记
 - 🔒 **安全设计** — SHA-256 + 固定盐值密码摘要，登录拦截过滤器
 
-### 线上演示
-
-> 🔗 **公网地址**：[http://120.77.178.130:8233/CampusActivitySystem/login](http://120.77.178.130:8233/CampusActivitySystem/login)  
-> 测试账号：`admin` / `123456`（管理员）、`leader` / `123456`（负责人）
-
 ---
 
 ## 🛠 技术栈
@@ -233,13 +228,6 @@ erDiagram
 | `browse_record` | 浏览记录 | id, user_id, activity_type, activity_id, activity_title, browse_time |
 | `messages` | 站内消息 | id, user_id, title, content, type, is_read, create_time |
 
-### 默认账号数据
-
-| 用户名 | 密码 | 角色 | 权限说明 |
-|:---|:---|:---|:---|
-| `admin` | `123456` | admin | 全平台管理权限，可增删改查所有用户发布的活动 |
-| `leader` | `123456` | leader | 可发布活动，但仅能编辑/删除自己创建的活动 |
-
 ---
 
 ## ✨ 功能详情
@@ -340,16 +328,6 @@ private static final String PASSWORD = "your_pwd"; // 改为你的 MySQL 密码
 
 ```
 http://localhost:8080/CampusActivitySystem/login
-```
-
-#### 6. 登录测试
-
-| 账号 | 密码 | 角色 |
-|:---|:---|:---|
-| `admin` | `123456` | 管理员 |
-| `leader` | `123456` | 负责人 |
-
-普通用户请自行通过注册页面注册。
 
 ---
 
